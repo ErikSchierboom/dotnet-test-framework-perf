@@ -4,6 +4,6 @@ set -eo pipefail
 
 hyperfine \
   --show-output \
-  --parameter-list dir xunit-v2,xunit-v3,xunit-v3-runner,xunit-v3-platform \
+  --parameter-list dir tunit-runner,tunit-test,xunit-v2-test,xunit-v3-test,xunit-v3-runner,xunit-v3-platform \
   --prepare 'rm -rf {dir}/obj {dir}/bin' \
   '{dir}/benchmark'

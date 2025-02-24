@@ -49,7 +49,7 @@ public class ListOpsTests
     [Fact]
     public void Concatenate_a_list_of_lists_list_of_lists()
     {
-        var lists = new List<List<int>> { new List<int> { 1, 2 }, new List<int> { 3 }, new List<int>(), new List<int> { 4, 5, 6 } };
+        var lists = new List<List<int>> { new() { 1, 2 }, new() { 3 }, new(), new() { 4, 5, 6 } };
         var expected = new List<int> { 1, 2, 3, 4, 5, 6 };
         Assert.Equal(expected, ListOps.Concat(lists));
     }
@@ -57,8 +57,8 @@ public class ListOpsTests
     [Fact]
     public void Concatenate_a_list_of_lists_list_of_nested_lists()
     {
-        var lists = new List<List<List<int>>> { new List<List<int>> { new List<int> { 1 }, new List<int> { 2 } }, new List<List<int>> { new List<int> { 3 } }, new List<List<int>> { new List<int>() }, new List<List<int>> { new List<int> { 4, 5, 6 } } };
-        var expected = new List<List<int>> { new List<int> { 1 }, new List<int> { 2 }, new List<int> { 3 }, new List<int>(), new List<int> { 4, 5, 6 } };
+        var lists = new List<List<List<int>>> { new() { new List<int> { 1 }, new List<int> { 2 } }, new() { new List<int> { 3 } }, new() { new List<int>() }, new() { new List<int> { 4, 5, 6 } } };
+        var expected = new List<List<int>> { new() { 1 }, new() { 2 }, new() { 3 }, new(), new() { 4, 5, 6 } };
         Assert.Equal(expected, ListOps.Concat(lists));
     }
 
@@ -182,8 +182,8 @@ public class ListOpsTests
     [Fact]
     public void Reverse_the_elements_of_the_list_list_of_lists_is_not_flattened()
     {
-        var list = new List<List<int>> { new List<int> { 1, 2 }, new List<int> { 3 }, new List<int>(), new List<int> { 4, 5, 6 } };
-        var expected = new List<List<int>> { new List<int> { 4, 5, 6 }, new List<int>(), new List<int> { 3 }, new List<int> { 1, 2 } };
+        var list = new List<List<int>> { new() { 1, 2 }, new() { 3 }, new(), new() { 4, 5, 6 } };
+        var expected = new List<List<int>> { new() { 4, 5, 6 }, new(), new() { 3 }, new() { 1, 2 } };
         Assert.Equal(expected, ListOps.Reverse(list));
     }
 }
