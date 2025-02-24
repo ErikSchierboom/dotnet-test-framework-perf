@@ -3,7 +3,7 @@
 set -eo pipefail
 
 hyperfine \
-  --export-asciidoc benchmark.md \
+  --export-markdown benchmark.md \
   --show-output \
   --parameter-list dir tunit-runner,tunit-test,xunit-v2-test,xunit-v3-test,xunit-v3-runner,xunit-v3-platform \
   --prepare 'rm -rf {dir}/obj {dir}/bin' \
