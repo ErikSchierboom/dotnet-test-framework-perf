@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -eo pipefail
+
+hyperfine \
+  --show-output \
+  --parameter-list dir xunit-v2,xunit-v3,xunit-v3-runner,xunit-v3-platform \
+  --prepare 'rm -rf {dir}/obj {dir}/bin' \
+  '{dir}/benchmark'
